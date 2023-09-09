@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { CreateSignalDto } from './dto/create-signal.dto';
-import { UpdateSignalDto } from './dto/update-signal.dto';
+import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class SignalsService {
-  create(createSignalDto: CreateSignalDto) {
-    return 'This action adds a new signal';
+  constructor(private prisma: PrismaService) {}
+
+  async findAll() {
+    return await this.prisma.signal.findMany();
   }
 
-  findAll() {
-    return `This action returns all signals`;
+  async getCategories() {
+    return await this.prisma.category.findMany();
   }
-
-  findOne(id: number) {
-    return `This action returns a #${id} signal`;
+  async findByCategory(slug: string) {
+    return await this.prisma.signal.findUnique({
+      where: {
+        slug,
+      },
+    });
   }
-
-  update(id: number, updateSignalDto: UpdateSignalDto) {
-    return `This action updates a #${id} signal`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} signal`;
+  async findBySlug(slug: string) {
+    return await this.prisma.signal.findUnique({
+      where: {
+        slug,
+      },
+    });
   }
 }
