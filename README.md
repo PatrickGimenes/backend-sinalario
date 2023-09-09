@@ -11,7 +11,7 @@ Para executar este projeto basta clonar o repositório:
 
 ```
   https://github.com/PatrickGimenes/backend-sinalario.git
-  cd points-of-interest
+  cd backend-sinalario
 ```
 
 Este projeto foi desenvolvido utilizando Nestjs e o gerenciador de pacotes pnpm, caso não tenha nenhum dos dois instalado em sua máquina, bastar executar os seguintes comandos no terminal:
