@@ -13,7 +13,7 @@ export class SignalsService {
     return await this.prisma.category.findMany();
   }
   async findByCategory(slug: string) {
-    return await this.prisma.signal.findUnique({
+    return await this.prisma.category.findUnique({
       where: {
         slug,
       },
