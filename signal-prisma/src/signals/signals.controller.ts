@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { SignalsService } from './signals.service';
 
-@Controller('signals')
+@Controller()
 export class SignalsController {
   constructor(private readonly signalsService: SignalsService) {}
 
@@ -9,16 +9,16 @@ export class SignalsController {
   findAll() {
     return this.signalsService.findAll();
   }
-  @Get()
+  @Get('/categories')
   getCategories() {
     return this.signalsService.getCategories();
   }
 
-  @Get(':id')
+  @Get('/category/:id')
   findByCategory(@Param('id') id: string) {
     return this.signalsService.findByCategory(id);
   }
-  @Get(':id')
+  @Get('/slug/:id')
   findBySlug(@Param('id') id: string) {
     return this.signalsService.findBySlug(id);
   }
